@@ -116,7 +116,7 @@ for point in wallPoints:
 
 # 	p = movePoint(p,delta,diff)
 
-totalTime=3
+totalTime=1
 deltaTime=1
 
 obj = Segment()
@@ -137,12 +137,12 @@ for time in range(0,totalTime,deltaTime):
 	print("time",time)
 	# scanning the wall, one raster point at an instant
 	for wp in wallPoints:
-		print("wp",wp.getCoords())
+		print("wall point observed",wp.getCoords())
 		pLit  = wp
 		pSeen = wp
 		p = obj.getStart()
 		diff = obj.getEnd()-obj.getStart()
-		while distance(p,obj.getEnd()) > eps:
+		while distance(p,obj.getEnd()) >= eps:
 			print("hidden point observed", p.getCoords())
 			print("peak in time intensity curve at ", distance(pSeen,p))
 			p = movePoint(p,delta,diff)	
