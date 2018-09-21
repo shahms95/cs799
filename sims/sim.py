@@ -23,6 +23,9 @@ class Point():
 	def getCoords(self):
 		return self.coords
 
+	def setCoords(self, coords):
+		self.coords = coords
+
 
 class Segment():
 	start = Point()
@@ -57,8 +60,8 @@ obj1.set(10,0)
 
 
 obj2 = Segment()
-obj2.setStart(9,0)
-obj2.setEnd(11,0)
+obj2.setStart(9,5)
+obj2.setEnd(11,5)
 
 
 
@@ -80,9 +83,17 @@ print(obj2.getEnd().getCoords())
 print(diff.getCoords())
 i=0
 
+
+def movePoint(point, delta, vec):
+	coords = vec.getCoords()
+	coords = delta*coords
+	p = Point()
+	p.setCoords(coords)
+	return point+p
+
 print("done 1")
 while distance(p,obj2.getEnd()) > eps:
 	print(i,distance(p,pointSeen))
 	i=i+1
-	
-	p = p + delta*diff.getCoords()
+
+	p = movePoint(p,delta,diff)
